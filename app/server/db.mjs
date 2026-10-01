@@ -31,6 +31,7 @@ export async function initializeDatabase() {
     uri: databaseUrl,
     connectionLimit: 5,
     timezone: 'Z',
+    ssl: process.env.DATABASE_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
   })
   await pool.query(`
     CREATE TABLE IF NOT EXISTS votos (
