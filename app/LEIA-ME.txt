@@ -1,0 +1,35 @@
+SISTEMA DE VOTAÇÃO ESTUDANTIL
+
+Este arquivo é um projeto React + Vite. Ele não abre corretamente com duplo clique no index.html porque precisa ser executado por um servidor local.
+
+COMO ABRIR NO PC
+
+1. Instale o Node.js LTS em https://nodejs.org/
+2. Extraia esta pasta do ZIP.
+3. Abra o PowerShell, Prompt de Comando ou Terminal dentro desta pasta.
+4. Execute:
+
+   npm install
+   npm run dev
+
+5. Abra no navegador o endereço mostrado no terminal, normalmente:
+
+   http://localhost:5173
+
+ALTERNATIVA COM PNPM
+
+   pnpm install
+   pnpm dev
+
+PARA GERAR UMA VERSÃO DE PRODUÇÃO
+
+   npm run build
+   npm run preview
+
+Depois abra o endereço mostrado pelo comando preview.
+
+IMPORTANTE
+
+O ZIP contém o código-fonte do site. A pasta node_modules não é incluída, por isso é necessário executar npm install uma vez antes de abrir o projeto.
+
+A versão deste pacote é uma interface local/demo. Para votação real entre vários computadores e celulares, é necessário conectar um backend e banco de dados compartilhados.
