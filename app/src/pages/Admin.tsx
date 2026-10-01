@@ -23,8 +23,8 @@ export default function Admin() {
   const cores = ['#3b56e8', '#e53935', '#16a34a', '#f97316', '#8b5cf6', '#0891b2'];
 
   useEffect(() => {
-    if (logado) getVotosRemotos().then(setVotos);
-  }, [logado]);
+    if (logado) getVotosRemotos(senha).then(setVotos);
+  }, [logado, senha]);
 
   function login() {
     if (senha === SENHA_ADMIN) {
@@ -70,7 +70,7 @@ export default function Admin() {
   }
 
   async function executarReset() {
-    await resetVotosRemotos();
+    await resetVotosRemotos(senha);
     setVotos([]);
     setConfirmReset(false);
     flash('Votos resetados com sucesso.');

@@ -82,18 +82,18 @@ export async function addVoto(voto: Voto): Promise<boolean> {
   return true;
 }
 
-export async function getVotosRemotos(): Promise<Voto[]> {
+export async function getVotosRemotos(adminPassword: string): Promise<Voto[]> {
   try {
-    const response = await fetch('/api/votes', { headers: { 'x-admin-password': 'gremio2026' } });
+    const response = await fetch('/api/votes', { headers: { 'x-admin-password': adminPassword } });
     if (response.ok) return (await response.json()).votos;
   } catch { /* fallback local */ }
   return getVotos();
 }
 
-export async function resetVotosRemotos(): Promise<boolean> {
+export async function resetVotosRemotos(adminPassword: string): Promise<boolean> {
   try {
     const response = await fetch('/api/votes', {
-      method: 'DELETE', headers: { 'x-admin-password': 'gremio2026' },
+      method: 'DELETE', headers: { 'x-admin-password': adminPassword },
     });
     if (response.ok) { localStorage.removeItem(VOTOS_KEY); return true; }
   } catch { /* fallback local */ }
