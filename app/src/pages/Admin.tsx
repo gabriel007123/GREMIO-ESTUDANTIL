@@ -102,7 +102,7 @@ export default function Admin() {
               {errSenha && <p className="text-red-500 text-xs mt-1">{errSenha}</p>}
             </div>
             <button onClick={login} className="btn-primary w-full">Entrar</button>
-            <p className="text-xs text-gray-400 text-center">Senha padrão: <code className="bg-gray-100 px-1 rounded">gremio2026</code></p>
+            <p className="text-xs text-gray-400 text-center">Senha da Administração <code className="bg-gray-100 px-1 rounded"></code></p>
           </div>
         </div>
       </div>
