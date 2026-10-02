@@ -32,7 +32,7 @@ const chapasDefault: Chapa[] = [
 ];
 
 const eleicaoDefault: ConfigEleicao = {
-  nome: 'Eleição do Grêmio Estudantil 2026', anoLetivo: '2026', escola: 'C.C 11 de outubro',
+  nome: 'Eleição Estudantil', anoLetivo: '2026', escola: 'C.C 11 de outubro',
   aberta: true, inicio: '2026-09-15', fim: '2026-09-20',
 };
 

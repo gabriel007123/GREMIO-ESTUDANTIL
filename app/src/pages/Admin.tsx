@@ -6,8 +6,6 @@ import {
 import type { Chapa, Voto } from '../lib/types';
 import type { ConfigEleicao } from '../lib/store';
 
-const SENHA_ADMIN = 'gremio2026';
-
 export default function Admin() {
   const [logado, setLogado] = useState(false);
   const [senha, setSenha] = useState('');
@@ -26,11 +24,18 @@ export default function Admin() {
     if (logado) getVotosRemotos(senha).then(setVotos);
   }, [logado, senha]);
 
-  function login() {
-    if (senha === SENHA_ADMIN) {
+  async function login() {
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ senha }),
+      });
+      if (response.ok) {
       setLogado(true);
-    } else {
-      setErrSenha('Senha incorreta.');
+      } else setErrSenha('Senha incorreta.');
+    } catch {
+      setErrSenha('Não foi possível conectar ao servidor.');
     }
   }
 
@@ -102,7 +107,6 @@ export default function Admin() {
               {errSenha && <p className="text-red-500 text-xs mt-1">{errSenha}</p>}
             </div>
             <button onClick={login} className="btn-primary w-full">Entrar</button>
-            <p className="text-xs text-gray-400 text-center">Senha da Administração <code className="bg-gray-100 px-1 rounded"></code></p>
           </div>
         </div>
       </div>

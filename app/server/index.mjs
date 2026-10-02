@@ -13,7 +13,7 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app = express()
 const port = Number(process.env.PORT || 3000)
-const adminPassword = process.env.ADMIN_PASSWORD || 'gremio2026'
+const adminPassword = process.env.ADMIN_PASSWORD || ''
 
 app.use(express.json({ limit: '100kb' }))
 
@@ -54,6 +54,13 @@ app.get('/api/results', async (_req, res, next) => {
   } catch (error) {
     next(error)
   }
+})
+
+app.post('/api/admin/login', (req, res) => {
+  if (!adminPassword || String(req.body?.senha || '') !== adminPassword) {
+    return res.status(401).json({ error: 'nao_autorizado' })
+  }
+  res.json({ ok: true })
 })
 
 app.get('/api/votes', async (req, res, next) => {
