@@ -32,7 +32,7 @@ const chapasDefault: Chapa[] = [
 ];
 
 const eleicaoDefault: ConfigEleicao = {
-  nome: 'Eleição do Grêmio Estudantil 2026', anoLetivo: '2026', escola: 'E.E. Prof. João da Silva',
+  nome: 'Eleição do Grêmio Estudantil 2026', anoLetivo: '2026', escola: 'C.C 11 de outubro',
   aberta: true, inicio: '2026-09-15', fim: '2026-09-20',
 };
 
@@ -122,7 +122,11 @@ export async function getResultadosRemotos() {
 export function getEleicao(): ConfigEleicao {
   try {
     const raw = localStorage.getItem(ELEICAO_KEY);
-    return raw ? JSON.parse(raw) : eleicaoDefault;
+    if (!raw) return eleicaoDefault;
+    const config = JSON.parse(raw) as ConfigEleicao;
+    return config.escola === 'E.E. Prof. João da Silva'
+      ? { ...config, escola: 'C.C 11 de outubro' }
+      : config;
   } catch { return eleicaoDefault; }
 }
 
